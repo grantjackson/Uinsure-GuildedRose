@@ -17,30 +17,34 @@ namespace GildedRose
                 var isBackstagePass = items[i].Name == BackstagePassesToATafkal80etcConcert;
                 var isSulfuras = items[i].Name == Sulfuras;
 
-                if (isAgedBrie || isBackstagePass)
+                if (isBackstagePass)
                 {
                     if (items[i].Quality < 50)
                     {
                         items[i].Quality += 1;
 
-                        if (isBackstagePass)
+                        if (items[i].SellIn < 11)
                         {
-                            if (items[i].SellIn < 11)
+                            if (items[i].Quality < 50)
                             {
-                                if (items[i].Quality < 50)
-                                {
-                                    items[i].Quality += 1;
-                                }
-                            }
-
-                            if (items[i].SellIn < 6)
-                            {
-                                if (items[i].Quality < 50)
-                                {
-                                    items[i].Quality += 1;
-                                }
+                                items[i].Quality += 1;
                             }
                         }
+
+                        if (items[i].SellIn < 6)
+                        {
+                            if (items[i].Quality < 50)
+                            {
+                                items[i].Quality += 1;
+                            }
+                        }
+                    }
+                }
+                else if (isAgedBrie)
+                {
+                    if (items[i].Quality < 50)
+                    {
+                        items[i].Quality += 1;
                     }
                 }
                 else

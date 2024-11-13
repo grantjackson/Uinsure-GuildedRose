@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GildedRose.Models;
 using GildedRoseKata;
 
 namespace GildedRose
@@ -22,33 +23,10 @@ namespace GildedRose
 
                 if (isBackstagePass)
                 {
-                    if (items[i].Quality < 50)
-                    {
-                        items[i].Quality += 1;
-
-                        if (items[i].SellIn < 11)
-                        {
-                            if (items[i].Quality < 50)
-                            {
-                                items[i].Quality += 1;
-                            }
-                        }
-
-                        if (items[i].SellIn < 6)
-                        {
-                            if (items[i].Quality < 50)
-                            {
-                                items[i].Quality += 1;
-                            }
-                        }
-                    }
-
-                    items[i].SellIn -= 1;
-
-                    if (items[i].SellIn >= 0) continue;
-
-                    items[i].Quality -= items[i].Quality;
-                    continue;
+                    var pass = new BackstagePass(items[i]);
+                    pass.UpdateItemQuality();
+                    items[i] = pass;
+                    continue; 
                 }
 
                 if (isAgedBrie)

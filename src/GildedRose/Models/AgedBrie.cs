@@ -1,4 +1,6 @@
-﻿namespace GildedRoseKata;
+﻿using GildedRoseKata;
+
+namespace GildedRose.Models;
 
 public sealed class AgedBrie(Item item) : BasicItem(item)
 {

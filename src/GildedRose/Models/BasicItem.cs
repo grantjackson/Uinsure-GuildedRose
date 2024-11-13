@@ -1,4 +1,6 @@
-﻿namespace GildedRoseKata;
+﻿using GildedRoseKata;
+
+namespace GildedRose.Models;
 
 public class BasicItem : Item
 {

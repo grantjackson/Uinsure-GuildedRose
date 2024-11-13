@@ -8,20 +8,18 @@ public sealed class BackstagePass(Item item) : BasicItem(item)
 
     public override void UpdateItemQuality()
     {
-        ModifyQuality(QualityIncrement);
-
-        if (SellIn < 11)
+        var increment = SellIn switch
         {
-            ModifyQuality(QualityIncrement);
-        }
-
-        if (SellIn < 6)
-        {
-            ModifyQuality(QualityIncrement);
-        }
-
+            < 6 => QualityIncrement * 3,
+            < 11 => QualityIncrement * 2,
+            >= 11 => QualityIncrement * 1
+        };
+        
+        ModifyQuality(increment);
+        
         SellIn -= 1;
 
-        if (SellIn < 0) Quality = MinimumQuality;
+        if (SellIn < 0) 
+            Quality = MinimumQuality;
     }
 }

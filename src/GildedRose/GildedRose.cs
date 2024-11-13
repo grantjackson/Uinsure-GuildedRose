@@ -62,31 +62,28 @@ namespace GildedRose
                     items[i].SellIn -= 1;
                 }
 
-                if (items[i].SellIn < 0)
+                if (items[i].SellIn >= 0) continue;
+                
+                if (isAgedBrie)
                 {
-                    if (isAgedBrie)
+                    if (items[i].Quality < 50)
                     {
-                        if (items[i].Quality < 50)
-                        {
-                            items[i].Quality += 1;
-                        }
+                        items[i].Quality += 1;
+                    }
+                }
+                else
+                {
+                    if (isBackstagePass)
+                    {
+                        items[i].Quality -= items[i].Quality;
                     }
                     else
                     {
-                        if (isBackstagePass)
-                        {
-                            items[i].Quality -= items[i].Quality;
-                        }
-                        else
-                        {
-                            if (items[i].Quality > 0)
-                            {
-                                if (items[i].Name != Sulfuras)
-                                {
-                                    items[i].Quality -= 1;
-                                }
-                            }
-                        }
+                        if (items[i].Quality <= 0) continue;
+                        
+                        if (isSulfuras) continue;
+                        
+                        items[i].Quality -= 1;
                     }
                 }
             }

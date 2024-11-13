@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using GildedRoseKata;
 
-namespace GildedRose
+namespace GildedRose;
+
+public class GildedRose(IList<Item> items)
 {
-    public class GildedRose(IList<Item> items)
+    public void UpdateQuality()
     {
-        public void UpdateQuality()
+        for (var i = 0; i < items.Count; i++)
         {
-            for (var i = 0; i < items.Count; i++)
-            {
-                var item = ItemFactory.GetItem(items[i]);
-                item.UpdateItemQuality();
-                items[i] = item;
-            }
+            var item = ItemFactory.GetItem(items[i]);
+            item.UpdateItemQuality();
+            items[i] = item;
         }
     }
 }

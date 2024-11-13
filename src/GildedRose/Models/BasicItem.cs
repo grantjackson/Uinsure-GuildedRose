@@ -20,9 +20,11 @@ public class BasicItem : Item
 
         SellIn -= 1;
 
-        if (SellIn >= 0) return;
+        if (SellIn >= 0) 
+            return;
 
-        if (Quality <= MinimumQuality) return;
+        if (Quality <= MinimumQuality) 
+            return;
 
         Quality -= 1;
     }

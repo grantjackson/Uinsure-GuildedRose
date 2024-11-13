@@ -53,20 +53,9 @@ namespace GildedRose
 
                 if (isAgedBrie)
                 {
-                    if (items[i].Quality < 50)
-                    {
-                        items[i].Quality += 1;
-                    }
-
-                    items[i].SellIn -= 1;
-
-                    if (items[i].SellIn >= 0) continue;
-
-                    if (items[i].Quality < 50)
-                    {
-                        items[i].Quality += 1;
-                    }
-
+                    var brie = new AgedBrie(items[i]);
+                    brie.UpdateItemQuality();
+                    items[i] = brie;
                     continue;
                 }
 

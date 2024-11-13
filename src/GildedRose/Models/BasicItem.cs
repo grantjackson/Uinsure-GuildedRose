@@ -6,9 +6,8 @@ public class BasicItem : Item
 {
     protected virtual int QualityIncrement => -1;
     protected const int MinimumQuality = 0;
-    protected const int MaximumQuality = 50;
-
-
+    private const int MaximumQuality = 50;
+    
     public BasicItem(Item item)
     {
         Name = item.Name;

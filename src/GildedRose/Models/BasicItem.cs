@@ -2,7 +2,7 @@
 
 namespace GildedRose.Models;
 
-public class BasicItem : Item
+internal class BasicItem : Item
 {
     protected virtual int QualityIncrement => -1;
     protected const int MinimumQuality = 0;
@@ -15,7 +15,7 @@ public class BasicItem : Item
         SellIn = item.SellIn;
     }
     
-    public virtual void UpdateItemQuality()
+    internal virtual void UpdateItemQuality()
     {
         ModifyQuality(QualityIncrement);
         

@@ -2,7 +2,7 @@
 
 namespace GildedRose.Models;
 
-public sealed class AgedBrie(Item item) : BasicItem(item)
+internal sealed class AgedBrie(Item item) : BasicItem(item)
 {
     protected override int QualityIncrement => 1;
 }

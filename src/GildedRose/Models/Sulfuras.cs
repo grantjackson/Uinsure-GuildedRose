@@ -2,7 +2,7 @@
 
 namespace GildedRose.Models;
 
-public sealed class Sulfuras(Item item): BasicItem(item)
+internal sealed class Sulfuras(Item item): BasicItem(item)
 {
-    public override void UpdateItemQuality(){}
+    internal override void UpdateItemQuality(){}
 }

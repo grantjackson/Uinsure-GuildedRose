@@ -2,11 +2,11 @@
 
 namespace GildedRose.Models;
 
-public sealed class BackstagePass(Item item) : BasicItem(item)
+internal sealed class BackstagePass(Item item) : BasicItem(item)
 {
     protected override int QualityIncrement => 1;
 
-    public override void UpdateItemQuality()
+    internal override void UpdateItemQuality()
     {
         var increment = SellIn switch
         {

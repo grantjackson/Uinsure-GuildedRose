@@ -5,8 +5,8 @@ namespace GildedRose.Models;
 public class BasicItem : Item
 {
     protected virtual int QualityIncrement => -1;
-    private const int MinimumQuality = 0;
-    private const int MaximumQuality = 50;
+    protected const int MinimumQuality = 0;
+    protected const int MaximumQuality = 50;
 
 
     public BasicItem(Item item)

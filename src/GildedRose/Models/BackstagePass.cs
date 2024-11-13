@@ -4,33 +4,33 @@ namespace GildedRose.Models;
 
 public sealed class BackstagePass(Item item) : BasicItem(item)
 {
+    protected override int QualityIncrement => 1;
+    
     public override void UpdateItemQuality()
     {
-        if (Quality < 50)
+        if (Quality < MaximumQuality)
         {
-            Quality += 1;
+            Quality += QualityIncrement;
 
             if (SellIn < 11)
             {
-                if (Quality < 50)
+                if (Quality < MaximumQuality)
                 {
-                    Quality += 1;
+                    Quality += QualityIncrement;
                 }
             }
 
             if (SellIn < 6)
             {
-                if (Quality < 50)
+                if (Quality < MaximumQuality)
                 {
-                    Quality += 1;
+                    Quality += QualityIncrement;
                 }
             }
         }
 
         SellIn -= 1;
 
-        if (SellIn >= 0) return;
-
-        Quality -= Quality;
+        if (SellIn < 0) Quality = 0;
     }
 }

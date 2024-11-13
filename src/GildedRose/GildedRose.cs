@@ -71,20 +71,18 @@ namespace GildedRose
                     {
                         items[i].Quality += 1;
                     }
+                    continue;
                 }
-                else
-                {
-                    if (isBackstagePass)
-                    {
-                        items[i].Quality -= items[i].Quality;
-                    }
-                    else
-                    {
-                        if (items[i].Quality <= 0) continue;
 
-                        items[i].Quality -= 1;
-                    }
+                if (isBackstagePass)
+                {
+                    items[i].Quality -= items[i].Quality;
+                    continue;
                 }
+
+                if (items[i].Quality <= 0) continue;
+
+                items[i].Quality -= 1;
             }
         }
     }

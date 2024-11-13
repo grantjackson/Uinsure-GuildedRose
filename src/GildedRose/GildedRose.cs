@@ -42,7 +42,7 @@ namespace GildedRose
                             }
                         }
                     }
-                    
+
                     items[i].SellIn -= 1;
 
                     if (items[i].SellIn >= 0) continue;
@@ -50,42 +50,29 @@ namespace GildedRose
                     items[i].Quality -= items[i].Quality;
                     continue;
                 }
-                
+
                 if (isAgedBrie)
                 {
                     if (items[i].Quality < 50)
                     {
                         items[i].Quality += 1;
                     }
-                    
+
                     items[i].SellIn -= 1;
 
                     if (items[i].SellIn >= 0) continue;
-                    
+
                     if (items[i].Quality < 50)
                     {
                         items[i].Quality += 1;
                     }
-                    
+
                     continue;
                 }
 
-                // this would be a generic item
-                if (items[i].Quality > 0)
-                {
-                    if (items[i].Name != Sulfuras)
-                    {
-                        items[i].Quality -= 1;
-                    }
-                }
-                    
-                items[i].SellIn -= 1;
-
-                if (items[i].SellIn >= 0) continue;
-
-                if (items[i].Quality <= 0) continue;
-
-                items[i].Quality -= 1;
+                var item = new BasicItem(items[i]);
+                item.UpdateItemQuality();
+                items[i] = item;
             }
         }
     }

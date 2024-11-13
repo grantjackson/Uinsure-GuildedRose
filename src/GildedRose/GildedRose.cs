@@ -42,43 +42,46 @@ namespace GildedRose
                             }
                         }
                     }
-                }
-                else if (isAgedBrie)
-                {
-                    if (items[i].Quality < 50)
-                    {
-                        items[i].Quality += 1;
-                    }
-                }
-                else
-                {
-                    if (items[i].Quality > 0)
-                    {
-                        if (items[i].Name != Sulfuras)
-                        {
-                            items[i].Quality -= 1;
-                        }
-                    }
+                    
+                    items[i].SellIn -= 1;
+
+                    if (items[i].SellIn >= 0) continue;
+
+                    items[i].Quality -= items[i].Quality;
+                    continue;
                 }
                 
-                items[i].SellIn -= 1;
-
-                if (items[i].SellIn >= 0) continue;
-
                 if (isAgedBrie)
                 {
                     if (items[i].Quality < 50)
                     {
                         items[i].Quality += 1;
                     }
+                    
+                    items[i].SellIn -= 1;
+
+                    if (items[i].SellIn >= 0) continue;
+                    
+                    if (items[i].Quality < 50)
+                    {
+                        items[i].Quality += 1;
+                    }
+                    
                     continue;
                 }
 
-                if (isBackstagePass)
+                // this would be a generic item
+                if (items[i].Quality > 0)
                 {
-                    items[i].Quality -= items[i].Quality;
-                    continue;
+                    if (items[i].Name != Sulfuras)
+                    {
+                        items[i].Quality -= 1;
+                    }
                 }
+                    
+                items[i].SellIn -= 1;
+
+                if (items[i].SellIn >= 0) continue;
 
                 if (items[i].Quality <= 0) continue;
 

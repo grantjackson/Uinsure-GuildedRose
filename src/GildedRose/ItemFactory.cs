@@ -3,7 +3,7 @@ using GildedRoseKata;
 
 namespace GildedRose;
 
-public class ItemFactory
+public static class ItemFactory
 {
     private const string AgedBrie = "Aged Brie";
     private const string Sulfuras = "Sulfuras, Hand of Ragnaros";

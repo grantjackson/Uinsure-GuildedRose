@@ -4,7 +4,10 @@ namespace GildedRose.Models;
 
 public class BasicItem : Item
 {
+    protected virtual int QualityIncrement => -1;
     private const int MinimumQuality = 0;
+    private const int MaximumQuality = 50;
+
 
     public BasicItem(Item item)
     {
@@ -15,19 +18,24 @@ public class BasicItem : Item
     
     public virtual void UpdateItemQuality()
     {
-        if (Quality > MinimumQuality)
-        {
-            Quality -= 1;
-        }
-
+        ModifyQuality(QualityIncrement);
+        
         SellIn -= 1;
 
         if (SellIn >= 0) 
             return;
 
-        if (Quality <= MinimumQuality) 
-            return;
+        ModifyQuality(QualityIncrement);
+    }
+    
+    protected void ModifyQuality(int value)
+    {
+        Quality += value;
 
-        Quality -= 1;
+        if (Quality > MaximumQuality) 
+            Quality = MaximumQuality;
+
+        if (Quality < MinimumQuality) 
+            Quality = MinimumQuality;
     }
 }

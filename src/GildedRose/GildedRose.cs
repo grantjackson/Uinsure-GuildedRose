@@ -17,6 +17,9 @@ namespace GildedRose
                 var isBackstagePass = items[i].Name == BackstagePassesToATafkal80etcConcert;
                 var isSulfuras = items[i].Name == Sulfuras;
 
+                if (isSulfuras)
+                    continue;
+
                 if (isBackstagePass)
                 {
                     if (items[i].Quality < 50)
@@ -57,17 +60,11 @@ namespace GildedRose
                         }
                     }
                 }
-
-                if (isSulfuras)
-                {
-                }
-                else
-                {
-                    items[i].SellIn -= 1;
-                }
+                
+                items[i].SellIn -= 1;
 
                 if (items[i].SellIn >= 0) continue;
-                
+
                 if (isAgedBrie)
                 {
                     if (items[i].Quality < 50)
@@ -84,9 +81,7 @@ namespace GildedRose
                     else
                     {
                         if (items[i].Quality <= 0) continue;
-                        
-                        if (isSulfuras) continue;
-                        
+
                         items[i].Quality -= 1;
                     }
                 }
